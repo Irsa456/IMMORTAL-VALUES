@@ -12,6 +12,7 @@
   background: #0f172a;
   color: white;
   font-family: 'Orbitron', sans-serif;
+    scroll-behavior: smooth;
 }
    .fruit {
   transition: all 0.2s ease;
@@ -195,14 +196,13 @@ box-shadow: 0 0 12px white;
 </p>
 
   <div class="buttons">
-    <button>Browse Values</button>
-    <button class="outline">Skins & Mutations</button>
-  </div>
+  <button onclick="scrollToSection('fruits')">FRUITS</button>
+  <button class="outline" onclick="scrollToSection('limited')">LIMITED / SPECIAL</button>
 </div>
 
   <h2 class="main-category">FRUITS</h2>
 <!-- MYTHICAL -->
-  <h2> 🐉 Mythical Fruits</h2>
+ <h2 id="fruits"> 🐉 Mythical Fruits</h2>
   <div class="container">
 
 <div class="fruit mythical">
@@ -743,7 +743,7 @@ box-shadow: 0 0 12px white;
 </div>
 
 <!-- LIMITED / SPECIAL -->
-<h2>🌟 LIMITED / SPECIAL</h2>
+<h2 id="limited">🌟 LIMITED / SPECIAL</h2>
 
 <h3 class="section-title">👹 Mutations</h3>
     <div class="container">
@@ -932,7 +932,7 @@ box-shadow: 0 0 12px white;
 </div>
 </div>
 
-    <script>
+   <script>
 function togglePerm(id) {
   var x = document.getElementById(id);
   if (x.style.display === "none") {
@@ -940,6 +940,12 @@ function togglePerm(id) {
   } else {
     x.style.display = "none";
   }
+}
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
 }
 </script>
   
