@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <h2>Immortal Blox</h2>
+
+  <div class="nav-links">
+    <a href="index.html">Fruit Values</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="changes.html">Value Changes</a>
+  </div>
+</header>
+
+<h1 style="text-align:center; margin-top:40px;">Trade Calculator</h1>
+
+<div class="container">
+
+<div class="fruit mythical">
+<h3>Your Fruit</h3>
+<select id="yourFruit">
+<option>Dragon</option>
+<option>Kitsune</option>
+<option>Dough</option>
+<option>Buddha</option>
+</select>
+</div>
+
+<div class="fruit legendary">
+<h3>Their Fruit</h3>
+<select id="theirFruit">
+<option>Dragon</option>
+<option>Kitsune</option>
+<option>Dough</option>
+<option>Buddha</option>
+</select>
+</div>
+
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+<button onclick="checkTrade()">Check Trade</button>
+</div>
+
+<h2 id="result" style="text-align:center;"></h2>
+
+<script>
+function checkTrade(){
+
+let values = {
+Dragon: 24000000,
+Kitsune: 3000000,
+Dough: 175000,
+Buddha: 75000
+};
+
+let your = document.getElementById("yourFruit").value;
+let their = document.getElementById("theirFruit").value;
+
+let diff = values[their] - values[your];
+
+if(diff > 0){
+document.getElementById("result").innerHTML =
+"🟩 W Trade (+" + diff + ")";
+}
+else if(diff < 0){
+document.getElementById("result").innerHTML =
+"🟥 L Trade (" + diff + ")";
+}
+else{
+document.getElementById("result").innerHTML =
+"⚪ Fair Trade";
+}
+
+}
+</script>
+
+</body>
+</html>
