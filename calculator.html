@@ -385,7 +385,8 @@ activeSlot.setAttribute("data-value",val);
 activeSlot.setAttribute("data-demand",demand);
 
 closePicker();
-updateTotals();
+
+  updateTotals();
 }
 
   function updateTotals(){
@@ -395,12 +396,16 @@ let yourDemand=0;
 let theirValue=0;
 let theirDemand=0;
 
-document.querySelectorAll(".side:first-child .slot").forEach(slot=>{
+document.querySelectorAll(".side")[0]
+.querySelectorAll(".slot")
+.forEach(slot=>{
 yourValue += Number(slot.dataset.value || 0);
 yourDemand += Number(slot.dataset.demand || 0);
 });
 
-document.querySelectorAll(".side:last-child .slot").forEach(slot=>{
+document.querySelectorAll(".side")[1]
+.querySelectorAll(".slot")
+.forEach(slot=>{
 theirValue += Number(slot.dataset.value || 0);
 theirDemand += Number(slot.dataset.demand || 0);
 });
@@ -418,14 +423,18 @@ function checkTrade(){
 let yourTotal=0;
 let theirTotal=0;
 
-document.querySelectorAll(".side:first-child .slot").forEach(slot=>{
+document.querySelectorAll(".side")[0]
+.querySelectorAll(".slot")
+.forEach(slot=>{
 yourTotal += Number(slot.dataset.value || 0);
 });
 
-document.querySelectorAll(".side:last-child .slot").forEach(slot=>{
+document.querySelectorAll(".side")[1]
+.querySelectorAll(".slot")
+.forEach(slot=>{
 theirTotal += Number(slot.dataset.value || 0);
 });
-
+  
 let diff = theirTotal - yourTotal;
 
 let card = document.getElementById("card");
