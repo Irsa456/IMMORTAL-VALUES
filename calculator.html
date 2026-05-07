@@ -353,8 +353,6 @@ Total Demand: 0
 
 <h2>Select Fruit</h2>
 
-<h2>Select Fruit</h2>
-
 <div class="picker-grid" id="pickerGrid">
 
 </div>
@@ -362,8 +360,6 @@ Total Demand: 0
 <button onclick="closePicker()">Close</button>
 </div>
 </div>
-
-<script>
 
 <script>
  
@@ -451,14 +447,13 @@ ${fruit.perm ? '<div class="perm-badge">✨ PERM AVAILABLE</div>' : ''}
 }
 
 function openPicker(slot){
+
 activeSlot = slot;
 
 renderPicker();
 
 document.getElementById("picker").style.display="flex";
 
-function closePicker(){
-document.getElementById("picker").style.display="none";
 }
 
 function chooseFruit(name,val,img,demand){
