@@ -258,6 +258,22 @@ color:#cbd5e1;
 .pick-card:hover{
 background:#9333ea;
 }
+  .category-title{
+margin-top:25px;
+margin-bottom:10px;
+font-size:22px;
+color:#c084fc;
+text-align:left;
+}
+
+.perm-badge{
+margin-top:8px;
+padding:4px 8px;
+background:#a855f7;
+border-radius:8px;
+font-size:11px;
+display:inline-block;
+}
 
   .slot-img{
 width:70px;
@@ -337,40 +353,109 @@ Total Demand: 0
 
 <h2>Select Fruit</h2>
 
-<div class="picker-grid">
+<h2>Select Fruit</h2>
 
-<div class="pick-card" onclick="chooseFruit('Dragon',24000000,'images/dragon(Western).png',10)">
-<img src="images/dragon.png">
-<h3>Dragon(Western)</h3>
-</div>
-
-<div class="pick-card" onclick="chooseFruit('Kitsune',3000000,'images/kitsune.png',9)">
-<img src="images/kitsune.png">
-<h3>Kitsune</h3>
-</div>
-
-<div class="pick-card" onclick="chooseFruit('Dough',175000,'images/dough.png',8)">
-<img src="images/dough.png">
-<h3>Dough</h3>
-</div>
-
-<div class="pick-card" onclick="chooseFruit('Buddha',75000,'images/buddha.png',7)">
-<img src="images/buddha.png">
-<h3>Buddha</h3>
-</div>
+<div class="picker-grid" id="pickerGrid">
 
 </div>
-  <button onclick="closePicker()">Close</button>
+
+<button onclick="closePicker()">Close</button>
 </div>
+</div>
+
+<script>
 
 <script>
  
   let activeSlot = null;
+  const fruits = [
+
+{
+name:"Dragon Western",
+value:23500000,
+demand:9.5,
+img:"images/dragon(Western).png",
+category:"Mythical",
+perm:36000000
+},
+
+{
+name:"Kitsune",
+value:3000000,
+demand:9.5,
+img:"images/kitsune.png",
+category:"Mythical",
+perm:30000000
+},
+
+{
+name:"Dough",
+value:150000,
+demand:7,
+img:"images/dough.png",
+category:"Mythical",
+perm:18000000
+},
+
+{
+name:"Buddha",
+value:50000,
+demand:8,
+img:"images/buddha.png",
+category:"Legendary",
+perm:8000000
+}
+
+];
+
+  function renderPicker(){
+
+const grid = document.getElementById("pickerGrid");
+
+grid.innerHTML = "";
+
+const categories = ["Mythical","Legendary"];
+
+categories.forEach(cat=>{
+
+grid.innerHTML +=
+'<div class="category-title">'+cat+'</div>';
+
+fruits
+.filter(fruit => fruit.category === cat)
+.forEach(fruit=>{
+
+grid.innerHTML += `
+
+<div class="pick-card"
+onclick="chooseFruit(
+'${fruit.name}',
+${fruit.value},
+'${fruit.img}',
+${fruit.demand}
+)">
+
+<img src="${fruit.img}">
+<h3>${fruit.name}</h3>
+
+${fruit.perm ? '<div class="perm-badge">✨ PERM AVAILABLE</div>' : ''}
+
+</div>
+
+`;
+
+});
+
+});
+
+}
 
 function openPicker(slot){
 activeSlot = slot;
+
+renderPicker();
+
 document.getElementById("picker").style.display="flex";
-}
 
 function closePicker(){
 document.getElementById("picker").style.display="none";
