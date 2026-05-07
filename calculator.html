@@ -219,16 +219,16 @@ border:2px solid #a855f7;
 
 .picker-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
+grid-template-columns:1fr 1fr 1fr;
+gap:10px;
 margin-top:18px;
 }
 
 .pick-card{
-padding:16px;
+padding:10px;
 background:#1e1b4b;
 border:1px solid #a855f7;
-border-radius:14px;
+border-radius:10px;
 cursor:pointer;
 text-align:center;
 font-weight:700;
@@ -236,8 +236,8 @@ transition:0.3s;
 }
 
 .pick-card img{
-width:70px;
-height:70px;
+width:50px;
+height:50px;
 object-fit:cover;
 border-radius:18px;
 margin-bottom:10px;
@@ -281,6 +281,29 @@ height:70px;
 object-fit:cover;
 border-radius:18px;
 }
+
+  #searchBar{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+margin-top:12px;
+margin-bottom:14px;
+background:#1e1b4b;
+color:white;
+}
+
+.filter-buttons{
+display:flex;
+gap:10px;
+margin-bottom:18px;
+}
+
+.filter-buttons button{
+flex:1;
+padding:10px;
+margin:0;
+}
   
 </style>
 </head>
@@ -312,10 +335,10 @@ border-radius:18px;
 <h2>Your Side</h2>
 
 <div class="slot-grid">
-<div class="slot" onclick="openPicker(this)">+</div>
-<div class="slot" onclick="openPicker(this)">+</div>
-<div class="slot" onclick="openPicker(this)">+</div>
-<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="toggleSlot(this)">+</div>
+  <div class="slot" onclick="toggleSlot(this)">+</div>
+  <div class="slot" onclick="toggleSlot(this)">+</div>
+  <div class="slot" onclick="toggleSlot(this)">+</div>
 </div>
   <div id="yourTotals">
 Total Value: 0<br>
@@ -328,10 +351,10 @@ Total Demand: 0
 <h2>Their Side</h2>
 
 <div class="slot-grid">
-<div class="slot" onclick="openPicker(this)">+</div>
-<div class="slot" onclick="openPicker(this)">+</div>
-<div class="slot" onclick="openPicker(this)">+</div>
-<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="toggleSlot(this)">+</div>
+  <div class="slot" onclick="toggleSlot(this)">+</div>
+  <div class="slot" onclick="toggleSlot(this)">+</div>
+  <div class="slot" onclick="toggleSlot(this)">+</div>
 </div>
   <div id="theirTotals">
 Total Value: 0<br>
@@ -350,6 +373,14 @@ Total Demand: 0
    <div id="picker" class="picker-popup">
 
 <div class="picker-box">
+
+  <input type="text" id="searchBar" placeholder="Search...">
+
+<div class="filter-buttons">
+<button onclick="filterItems('Fruit')">Fruits</button>
+<button onclick="filterItems('Limited')">Limiteds</button>
+<button onclick="filterItems('Gamepass')">Gamepasses</button>
+</div>
 
 <h2>Select Fruit</h2>
 
@@ -404,22 +435,13 @@ perm:8000000
 
 ];
 
-  function renderPicker(){
+ function renderPicker(){
 
 const grid = document.getElementById("pickerGrid");
 
 grid.innerHTML = "";
 
-const categories = ["Mythical","Legendary"];
-
-categories.forEach(cat=>{
-
-grid.innerHTML +=
-'<div class="category-title">'+cat+'</div>';
-
-fruits
-.filter(fruit => fruit.category === cat)
-.forEach(fruit=>{
+fruits.forEach(fruit=>{
 
 grid.innerHTML += `
 
@@ -442,7 +464,22 @@ ${fruit.perm ? '<div class="perm-badge">✨ PERM AVAILABLE</div>' : ''}
 
 });
 
-});
+}
+  function toggleSlot(slot){
+
+if(slot.dataset.value){
+
+slot.innerHTML = "+";
+
+slot.removeAttribute("data-value");
+slot.removeAttribute("data-demand");
+
+updateTotals();
+
+}
+else{
+openPicker(slot);
+}
 
 }
 
