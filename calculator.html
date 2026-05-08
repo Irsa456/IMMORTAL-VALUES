@@ -245,7 +245,7 @@ margin-bottom:10px;
 
 .pick-card h3{
 margin:5px 0;
-font-size:18px;
+font-size:14px;
 color:#fff;
 }
 
@@ -374,7 +374,12 @@ Total Demand: 0
 
 <div class="picker-box">
 
-  <input type="text" id="searchBar" placeholder="Search...">
+  <input
+type="text"
+id="searchBar"
+placeholder="Search..."
+onkeyup="renderPicker()"
+>
 
 <div class="filter-buttons">
 <button onclick="filterItems('Fruit')">Fruits</button>
@@ -395,23 +400,28 @@ Total Demand: 0
 <script>
  
   let activeSlot = null;
+
+  let currentFilter = "Fruit";
+  
   const fruits = [
 
 {
 name:"Dragon Western",
 value:23500000,
 demand:9.5,
-img:"images/dragon(Western).png",
+img:"images/west dragon.png",
 category:"Mythical",
+type:"Fruit",
 perm:36000000
 },
-
+    
 {
 name:"Kitsune",
 value:3000000,
 demand:9.5,
 img:"images/kitsune.png",
 category:"Mythical",
+type:"fruit",
 perm:30000000
 },
 
@@ -421,6 +431,7 @@ value:150000,
 demand:7,
 img:"images/dough.png",
 category:"Mythical",
+  type:"fruit",
 perm:18000000
 },
 
@@ -430,6 +441,7 @@ value:50000,
 demand:8,
 img:"images/buddha.png",
 category:"Legendary",
+  type:"fruit",
 perm:8000000
 }
 
@@ -439,9 +451,19 @@ perm:8000000
 
 const grid = document.getElementById("pickerGrid");
 
+const search =
+document.getElementById("searchBar")
+.value
+.toLowerCase();
+
 grid.innerHTML = "";
 
-fruits.forEach(fruit=>{
+fruits
+.filter(fruit => fruit.type === currentFilter)
+.filter(fruit =>
+fruit.name.toLowerCase().includes(search)
+)
+.forEach(fruit=>{
 
 grid.innerHTML += `
 
@@ -465,6 +487,15 @@ ${fruit.perm ? '<div class="perm-badge">✨ PERM AVAILABLE</div>' : ''}
 });
 
 }
+
+  function filterItems(type){
+
+currentFilter = type;
+
+renderPicker();
+
+}
+  
   function toggleSlot(slot){
 
 if(slot.dataset.value){
