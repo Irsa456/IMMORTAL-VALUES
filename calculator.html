@@ -260,12 +260,34 @@ text-align:left;
 }
 
 .perm-badge{
+  
 margin-top:8px;
 padding:4px 8px;
 background:#a855f7;
 border-radius:8px;
 font-size:11px;
 display:inline-block;
+}
+  .close-x{
+position:sticky;
+top:0;
+margin-left:auto;
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+font-weight:700;
+cursor:pointer;
+border-radius:50%;
+background:#a855f7;
+color:white;
+z-index:10;
+}
+
+.close-x:hover{
+background:#9333ea;
 }
 
   .slot-img{
@@ -367,6 +389,8 @@ Total Demand: 0
 
 <div class="picker-box">
 
+<div class="close-x" onclick="closePicker()">✕</div>
+
   <input
 type="text"
 id="searchBar"
@@ -385,8 +409,6 @@ onkeyup="renderPicker()"
 <div class="picker-grid" id="pickerGrid">
 
 </div>
-
-<button onclick="closePicker()">Close</button>
 </div>
 </div>
 
@@ -632,7 +654,7 @@ perm:8500000
 name:"Spider",
 value:15000,
 demand:4,
-img:"images/spider.png",
+img:"images/spidy.png",
 category:"Legendary",
 type:"Fruit",
 perm:8700000
@@ -762,7 +784,7 @@ perm:2000000
 name:"Spike",
 value:2000,
 demand:1,
-img:"images/spike.png",
+img:"images/spiky.png",
 category:"Common",
 type:"Fruit",
 perm:1000000
@@ -826,6 +848,264 @@ img:"images/rocket.png",
 category:"Common",
 type:"Fruit",
 perm:100000
+},
+
+{
+name:"Crimson Kitsune",
+value:53000000,
+demand:10,
+img:"images/red kit.png",
+type:"Limited"
+},
+
+{
+name:"Galaxy Kitsune",
+value:69000000,
+demand:10,
+img:"images/galaxykitsune.png",
+type:"Limited"
+},
+
+  {
+name:"Werewolf (Tiger)",
+value:5000000,
+demand:9,
+img:"images/wolf.png",
+type:"Limited"
+},
+
+  {
+name:"Fiend (Yeti)",
+value:400000,
+demand:7.5,
+img:"images/fiend.png",
+type:"Limited"
+},
+
+  {
+name:"Eclipse Dragon",
+value:180000000,
+demand:10,
+img:"images/greenrumble.png",
+type:"Limited"
+},
+
+  {
+name:"Ember Dragon",
+value:35000000,
+demand:9.8,
+img:"images/ember.png",
+type:"Limited"
+},
+
+  
+{
+name:"purple Lightning",
+value:32000000,
+demand:6,
+img:"images/purplerumble.png",
+type:"Limited"
+},
+
+  {
+name:"yellow Lightning",
+value:2500000,
+demand:6,
+img:"images/yellowrumble.png",
+type:"Limited"
+},
+
+{
+name:"red Lightning",
+value:2500000,
+demand:6,
+img:"images/redrumble.png",
+type:"Limited"
+},
+
+  
+{
+name:"Green Lightning",
+value:2500000,
+demand:6,
+img:"images/greenrumble.png",
+type:"Limited"
+},
+
+{
+name:"Super Spirit Pain",
+value:9000000,
+demand:10,
+img:"images/ssp.png",
+type:"Limited"
+},
+
+{
+name:"Celestial Pain",
+value:2400000,
+demand:7,
+img:"images/purplepaw.png",
+type:"Limited"
+},
+
+{
+name:"Sadness Pain",
+value:2300000,
+demand:6,
+img:"images/bluepaw.png",
+type:"Limited"
+},
+
+{
+name:"Frustration Pain",
+value:2000000,
+demand:5,
+img:"images/orangepaw.png",
+type:"Limited"
+},
+
+{
+name:"Torment Pain",
+value:400000,
+demand:2,
+img:"images/tormentpain.png",
+type:"Limited"
+},
+
+{
+name:"Rose Quartz Diamond",
+value:900000,
+demand:6,
+img:"images/rosequartzdiamond.png",
+type:"Limited"
+},
+
+{
+name:"Emerald Diamond",
+value:800000,
+demand:6,
+img:"images/emeralddiamond.png",
+type:"Limited"
+},
+
+{
+name:"Topaz Diamond",
+value:800000,
+demand:5,
+img:"images/topazdiamond.png",
+type:"Limited"
+},
+
+{
+name:"Ruby Diamond",
+value:600000,
+demand:5,
+img:"images/rubydiamond.png",
+type:"Limited"
+},
+
+{
+name:"Matrix Eagle",
+value:1100000,
+demand:6,
+img:"images/matrixeagle.png",
+type:"Limited"
+},
+
+{
+name:"Requiem Eagle",
+value:800000,
+demand:4,
+img:"images/requiemeagle.png",
+type:"Limited"
+},
+
+{
+name:"Glacier Eagle",
+value:100000,
+demand:2,
+img:"images/glaciereagle.png",
+type:"Limited"
+},
+
+{
+name:"Azura Bomb",
+value:2500000,
+demand:8,
+img:"images/azurabomb.png",
+type:"Limited"
+},
+
+{
+name:"Thermite Bomb",
+value:2500000,
+demand:8,
+img:"images/thermitebomb.png",
+type:"Limited"
+},
+
+{
+name:"Nuclear Bomb",
+value:2500000,
+demand:8,
+img:"images/nuclearbomb.png",
+type:"Limited"
+},
+
+{
+name:"+1 Fruit Storage",
+value:2500000,
+demand:8,
+img:"images/storage.png",
+type:"Gamepass"
+},
+
+{
+name:"2x Drop Chance",
+value:2000000,
+demand:7,
+img:"images/drop.png",
+type:"Gamepass"
+},
+
+{
+name:"Fast Boats",
+value:2000000,
+demand:7,
+img:"images/boats.png",
+type:"Gamepass"
+},
+
+{
+name:"2x Money",
+value:2800000,
+demand:8,
+img:"images/money.png",
+type:"Gamepass"
+},
+
+{
+name:"2x Mastery",
+value:2800000,
+demand:8,
+img:"images/mastery.png",
+type:"Gamepass"
+},
+
+{
+name:"Dark Blade",
+value:6000000,
+demand:8,
+img:"images/darkblade.png",
+type:"Gamepass"
+},
+
+{
+name:"Fruit Notifier",
+value:20000000,
+demand:6,
+img:"images/notifier.png",
+type:"Gamepass"
 }
 
 ];
