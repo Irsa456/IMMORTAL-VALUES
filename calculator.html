@@ -220,6 +220,14 @@ gap:10px;
 margin-top:18px;
 }
 
+  @media(max-width:700px){
+
+.picker-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+  
 .pick-card{
 padding:10px;
 background:#1e1b4b;
@@ -342,6 +350,25 @@ flex:1;
 padding:10px;
 margin:0;
 }
+  .Mythical{
+box-shadow:0 0 12px #ff3b3b;
+}
+
+.Legendary{
+box-shadow:0 0 12px #ffd700;
+}
+
+.Rare{
+box-shadow:0 0 12px #3b82f6;
+}
+
+.Uncommon{
+box-shadow:0 0 12px #22c55e;
+}
+
+.Common{
+box-shadow:0 0 12px #9ca3af;
+}
   
 </style>
 </head>
@@ -398,8 +425,6 @@ Total Demand: 0
 </div>
 
 </div>
-
-<button onclick="checkTrade()">Check Trade</button>
 
 <div id="result"></div>
 <div id="diff"></div>
@@ -1154,7 +1179,7 @@ fruit.name.toLowerCase().includes(search)
 
 grid.innerHTML += `
 
-<div class="pick-card"
+<div class="pick-card ${fruit.category}"
 onclick="chooseFruit(
 '${fruit.name}',
 ${fruit.value},
@@ -1223,7 +1248,7 @@ slot.removeAttribute("data-value");
 slot.removeAttribute("data-demand");
 
 updateTotals();
-
+checkTrade();
 }
 else{
 openPicker(slot);
@@ -1255,8 +1280,9 @@ activeSlot.setAttribute("data-value",val);
 activeSlot.setAttribute("data-demand",demand);
 
 closePicker();
-
+  
   updateTotals();
+  checkTrade();
 }
 
   function updateTotals(){
