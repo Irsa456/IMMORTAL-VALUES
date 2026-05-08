@@ -416,7 +416,7 @@ onkeyup="renderPicker()"
  
   let activeSlot = null;
 
-  let currentFilter = "Fruit";
+  let currentFilter = "All";
   
 
 const fruits = [
@@ -1122,8 +1122,11 @@ document.getElementById("searchBar")
 grid.innerHTML = "";
 
 fruits
-.filter(fruit => fruit.type === currentFilter)
 .filter(fruit =>
+currentFilter === "All"
+|| fruit.type === currentFilter
+)
+  .filter(fruit =>
 fruit.name.toLowerCase().includes(search)
 )
 .forEach(fruit=>{
