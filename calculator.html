@@ -1164,7 +1164,37 @@ ${fruit.demand}
 <img src="${fruit.img}">
 <h3>${fruit.name}</h3>
 
-${fruit.perm ? '<div class="perm-badge">✨ PERM AVAILABLE</div>' : ''}
+${fruit.perm ? `
+
+<div class="perm-options">
+
+<button onclick="
+event.stopPropagation();
+chooseFruit(
+'${fruit.name}',
+${fruit.value},
+'${fruit.img}',
+${fruit.demand}
+)
+">
+Normal
+</button>
+
+<button onclick="
+event.stopPropagation();
+chooseFruit(
+'Perm ${fruit.name}',
+${fruit.perm},
+'${fruit.img}',
+${fruit.demand}
+)
+">
+Perm
+</button>
+
+</div>
+
+` : ''}
 
 </div>
 
