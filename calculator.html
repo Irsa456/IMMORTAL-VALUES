@@ -163,9 +163,16 @@ font-size: 28px;
 color: #c084fc;
 }
 
-.menu-btn {
-font-size: 38px;
-color: #c084fc;
+.menu-btn{
+font-size:38px;
+color:#c084fc;
+cursor:pointer;
+transition:0.25s;
+}
+
+.menu-btn:hover{
+transform:scale(1.08);
+text-shadow:0 0 12px #c084fc;
 }
 
 .center-links{
@@ -386,8 +393,9 @@ box-shadow:0 0 12px #9ca3af;
 <a href="index.html">Home</a>
 </div>
 
-<div class="right-side"></div>
-
+<div class="right-side">
+<div class="menu-btn">☰</div>
+</div>
 </header>
 
 <h1>Trade Calculator</h1>
