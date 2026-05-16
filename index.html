@@ -273,6 +273,128 @@ box-shadow:0 0 10px #a855f7;
 .right-side {
   width: 90px;
 }
+    .sidebar-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(4px);
+opacity:0;
+pointer-events:none;
+transition:0.3s;
+z-index:1998;
+}
+
+.sidebar-overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+left:-320px;
+width:290px;
+height:100vh;
+background:rgba(15,23,42,0.98);
+backdrop-filter:blur(12px);
+border-right:2px solid #a855f7;
+box-shadow:0 0 30px rgba(168,85,247,0.35);
+padding:24px;
+box-sizing:border-box;
+transition:0.35s;
+z-index:1999;
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.sidebar-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+}
+
+.sidebar-logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.sidebar-logo img{
+width:42px;
+height:42px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.sidebar-logo h2{
+margin:0;
+font-size:24px;
+color:#c084fc;
+}
+
+.close-menu{
+font-size:30px;
+cursor:pointer;
+color:#c084fc;
+transition:0.25s;
+}
+
+.sidebar-divider{
+height:1px;
+background:rgba(255,255,255,0.12);
+margin:10px 0;
+}
+
+.sidebar a{
+text-decoration:none;
+color:white;
+padding:14px 16px;
+border-radius:14px;
+background:rgba(255,255,255,0.03);
+transition:0.25s;
+font-size:16px;
+font-weight:700;
+}
+
+.sidebar a:hover{
+background:rgba(168,85,247,0.16);
+transform:translateX(5px);
+box-shadow:0 0 14px rgba(168,85,247,0.45);
+color:#d8b4fe;
+}
+
+.sidebar-info{
+padding:14px;
+border-radius:14px;
+background:rgba(168,85,247,0.08);
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+.sidebar-info span{
+font-weight:700;
+color:white;
+}
+
+@media(max-width:700px){
+
+.sidebar{
+width:75vw;
+max-width:300px;
+}
+
+.close-menu{
+display:none;
+}
+
+}
     .jump-buttons button{
 font-size:11px;
 padding:7px 10px;
@@ -381,8 +503,9 @@ box-shadow:0 0 12px #a855f7;
  <header class="navbar">
 
 <div class="left-side">
-<span class="menu-btn">☰</span>
-
+  
+<span class="menu-btn" onclick="openMenu()">☰</span>
+  
 <img src="images/IBVLOGO.png" class="site-logo">
 
 <h2>IBV</h2>
@@ -395,6 +518,43 @@ box-shadow:0 0 12px #a855f7;
 <div class="right-side"></div>
 
 </header>
+  <div class="sidebar-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-top">
+
+<div class="sidebar-logo">
+<img src="images/IBVLOGO.png">
+<h2>IBV MENU</h2>
+</div>
+
+<div class="close-menu" onclick="closeMenu()">✕</div>
+
+</div>
+
+<a href="index.html">🏠 Values</a>
+<a href="calculator.html">🧮 Calculator</a>
+<a href="changes.html">📈 Changes</a>
+
+<div class="sidebar-divider"></div>
+
+<div class="sidebar-info">
+🔥 Latest Update
+<span>Update 28 Released</span>
+</div>
+
+<div class="sidebar-info">
+⭐ Most Rising Fruit
+<span>Divine Portal</span>
+</div>
+
+<div class="sidebar-info">
+🔻 Biggest Drop
+<span>Mammoth</span>
+</div>
+
+</div>
 
 <div class="hero">
   <h1>Immortal Blox Values</h1>
@@ -1464,6 +1624,29 @@ card.style.display="flex";
 });
 }
 }
+</script>
+  <script>
+
+function openMenu(){
+
+document.getElementById("sidebar")
+.classList.add("active");
+
+document.getElementById("overlay")
+.classList.add("active");
+
+}
+
+function closeMenu(){
+
+document.getElementById("sidebar")
+.classList.remove("active");
+
+document.getElementById("overlay")
+.classList.remove("active");
+
+}
+
 </script>
   
 </body>
